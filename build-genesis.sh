@@ -21,10 +21,10 @@ echo "Processing airdrop snapshot..."
 if ! [ -f genesis.json ]; then
     curl -O https://archive.interchain.io/4.0.2/genesis.json
 fi
-starsd export-airdrop-snapshot uatom genesis.json snapshot.json
+# starsd export-airdrop-snapshot uatom genesis.json snapshot.json
 starsd init testmoniker --chain-id $CHAIN_ID
 starsd prepare-genesis testnet $CHAIN_ID
-starsd import-genesis-accounts-from-snapshot snapshot.json
+# starsd import-genesis-accounts-from-snapshot snapshot.json
 
 echo "Adding vesting accounts..."
 GENESIS_TIME=$(jq '.genesis_time' ~/.starsd/config/genesis.json | tr -d '"')
@@ -38,7 +38,7 @@ vesting_start_time=$(($GENESIS_UNIX_TIME + $LOCKUP))
 vesting_end_time=$(($vesting_start_time + $LOCKUP))
 
 starsd add-genesis-account stars1s4ckh9405q0a3jhkwx9wkf9hsjh66nmuu53dwe 350000000000000$DENOM
-starsd add-genesis-account stars13nh557xzyfdm6csyp0xslu939l753sdlgdc2q0 250000000000000$DENOM
+# starsd add-genesis-account stars13nh557xzyfdm6csyp0xslu939l753sdlgdc2q0 250000000000000$DENOM
 starsd add-genesis-account stars12yxedm78tpptyhhasxrytyfyj7rg7dcqfgrdk4 16666666666667$DENOM \
     --vesting-amount 16666666666667$DENOM \
     --vesting-start-time $vesting_start_time \
