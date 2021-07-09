@@ -21,10 +21,10 @@ echo "Processing airdrop snapshot..."
 if ! [ -f genesis.json ]; then
     curl -O https://archive.interchain.io/4.0.2/genesis.json
 fi
-# starsd export-airdrop-snapshot uatom genesis.json snapshot.json
+starsd export-airdrop-snapshot uatom genesis.json snapshot.json
 starsd init testmoniker --chain-id $CHAIN_ID
 starsd prepare-genesis testnet $CHAIN_ID
-# starsd import-genesis-accounts-from-snapshot snapshot.json
+starsd import-genesis-accounts-from-snapshot snapshot.json
 
 echo "Adding vesting accounts..."
 GENESIS_TIME=$(jq '.genesis_time' ~/.starsd/config/genesis.json | tr -d '"')
