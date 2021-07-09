@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DENOM=ustars
+DENOM=ustarx
 CHAIN_ID=cygnusx-1
 ONE_HOUR=3600
 ONE_DAY=$(($ONE_HOUR * 24))
